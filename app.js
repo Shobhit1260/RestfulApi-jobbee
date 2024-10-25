@@ -9,7 +9,7 @@ const connectiontodb=require('./config/database.js');
 const startserver= async ()=>{
     try{
         await connectiontodb();
-  
+        app.use(express.json());
         // /importing all the routes
         const route =require('./Routes/jobs.js');
         
@@ -21,7 +21,7 @@ const startserver= async ()=>{
         })        
     }
     catch(error){
-       console.log("error in starting the server");
+        console.error("Error in starting the server:", error.message);
     }
    
 }
